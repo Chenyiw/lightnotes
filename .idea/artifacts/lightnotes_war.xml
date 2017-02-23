@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lightnotes:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="lightnotes.war">
+      <element id="artifact" artifact-name="lightnotes:war exploded" />
+    </root>
+  </artifact>
+</component>

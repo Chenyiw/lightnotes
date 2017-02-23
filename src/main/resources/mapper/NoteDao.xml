@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lightnotes.dao.NoteDao">
+    <select id="selectNoteByCreator" resultType="Note" >
+        SELECT *
+        FROM note
+        WHERE creatorID = #{creatorID}
+    </select>
+
+    <select id="detailNoteByCreator" resultType="NoteDetail">
+        SELECT
+        note.noteID,
+        note.type,
+        note.theme,
+        note.content,
+        T1.`name` AS editor,
+        T2.`name` AS creator,
+        note.time
+        FROM note, user T1, user T2
+        WHERE
+        note.editorID = T1.userID
+        AND note.creatorID = T2.userID
+        AND note.creatorId = #{creatorID}
+    </select>
+    <!--<select id="selectUser" resultType="User" >-->
+        <!--SELECT userID,userMail,password,type,name,gender,age-->
+        <!--FROM user-->
+        <!--WHERE usermail = #{usermail}-->
+    <!--</select>-->
+
+    <!--<select id="selecUserByID" resultType="User" >-->
+        <!--SELECT userID,userMail,password,type,name,gender,age-->
+        <!--FROM user-->
+        <!--WHERE userID = #{userID}-->
+    <!--</select>-->
+
+    <!--<select id="showAllUser" resultType="User">-->
+        <!--SELECT *-->
+        <!--FROM user-->
+    <!--</select>-->
+
+    <!--<delete id="deleteUser">-->
+        <!--DELETE FROM user-->
+        <!--WHERE userID = #{userID}-->
+    <!--</delete>-->
+
+    <!--<insert id="insertUser">-->
+        <!--INSERT INTO user(userMail,password,type,name,gender,age)-->
+        <!--VALUES (#{userMail},#{password},#{type},#{name},#{gender},#{age})-->
+    <!--</insert>-->
+
+    <!--<update id="updateUser">-->
+        <!--UPDATE user-->
+        <!--SET userMail = #{userMail},password = #{password},type = #{type},name = #{name},age = #{age}-->
+        <!--WHERE userID = #{userID}-->
+    <!--</update>-->
+
+
+</mapper>
