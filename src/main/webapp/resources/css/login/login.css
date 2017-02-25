@@ -1,0 +1,70 @@
+.bg{
+  width: 100%;
+  height: 693px;
+  background:url(/resources/source/img/login/login.png) no-repeat;
+}
+
+.login{
+  position: relative;
+  top:276px;
+  left: 351px;
+}
+input{
+outline:none;
+}
+#sub{
+  width: 80px;
+  height: 80px;
+  border: 0;
+  position: relative;
+  top:-110px;
+  left: 530px;
+  background:url(/resources/source/img/login/submit.png)
+
+}
+#sub:active{
+
+background:url(/resources/source/img/login/active.png)
+}
+#sub:hover{
+
+background:url(/resources/source/img/login/hover.png)
+}
+
+
+.put{
+  background-color: #2b2b2b;
+  border: 0px;
+  height: 50px;
+  width:380px;
+  margin: 11px 0;
+  padding: 10px;
+  opacity: 0%;
+  font-size: 28px;
+  color: #fff;
+
+}
+#user{
+  color: #fff;
+  font-size: 30px;
+  opacity: 0%;
+  margin: 0  0 0 30px;
+}
+
+#password{
+  color: #fff;
+  font-size: 30px;
+  margin: 0  0 0 30px;
+}
+
+.shandow{
+  width:100%;
+  height:100%;
+  background-color: #373737;
+  position: fixed;
+  background-position: center center;
+  top: 0;
+  left: 0;
+  overflow:hidden;
+  z-index: -1;
+}

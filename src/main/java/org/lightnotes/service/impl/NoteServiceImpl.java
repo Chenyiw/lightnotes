@@ -11,6 +11,7 @@ import org.lightnotes.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.soap.Detail;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -34,6 +35,10 @@ public class NoteServiceImpl implements NoteService {
         List<NoteDetail> listDetail = noteDao.detailNoteByCreator(userID);
 
         return listDetail;
+    }
+
+    public List<NoteDetail> detailNoteByCreator(long userID) {
+        return noteDao.detailNoteByCreator(userID);
     }
 
     public int editorNote(Note note) {

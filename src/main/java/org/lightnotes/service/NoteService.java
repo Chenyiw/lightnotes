@@ -3,6 +3,7 @@ package org.lightnotes.service;
 import org.lightnotes.dto.NoteDetail;
 import org.lightnotes.entity.Note;
 
+import javax.xml.soap.Detail;
 import java.util.List;
 
 /**
@@ -10,6 +11,8 @@ import java.util.List;
  */
 public interface NoteService {
     List<NoteDetail> getNoteByCreator(long userID);
+
+    List<NoteDetail> detailNoteByCreator(long userID);
 
     int editorNote(Note note);
 
