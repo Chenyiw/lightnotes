@@ -27,16 +27,16 @@ public class UserController {
         String password = user.getPassword();
         user = userService.selectUser(usermail);
         if(user != null&&user.getPassword().equals(password)){
-            model.addAttribute("userID",user.getUserID());
+            session.setAttribute("userID",user.getUserID());
             return "redirect:/note/myNote";
         }else{
             String info = "无法登陆";
-            session.setAttribute("loginErrinfo", info);
+            session.setAttribute("info", info);
             return "redirect:/";
         }
-
-
     }
+
+
 
 //    @RequestMapping(value = "/{userMail}/userByMail")
 //    public String userByMail(@PathVariable("userMail") String userMail, Model model){

@@ -41,6 +41,14 @@ public class NoteServiceImpl implements NoteService {
         return noteDao.detailNoteByCreator(userID);
     }
 
+    public List<NoteDetail> selectNoteByLimit(String theme, int type,long userID) {
+        theme = "%"+theme+"%";
+        if(type==-1){
+            return noteDao.selectNoteByTheme(theme,userID);
+        }
+        return  noteDao.selectNoteByThemeAndType(theme,type,userID);
+    }
+
     public int editorNote(Note note) {
         return 0;
     }

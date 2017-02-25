@@ -17,8 +17,8 @@
 
 <body>
 <%
-    String errorInfo = (String)session.getAttribute("loginErrinfo");
-    session.removeAttribute("loginErrinfo");
+    String info = (String)session.getAttribute("info");
+    session.removeAttribute("info");
 
 
 %>
@@ -43,8 +43,8 @@
 <div class="shandow"></div>
 
 <%
-    if (errorInfo != null){
-        out.println("<script>alert(\""+errorInfo+"\")</script>");
+    if (info != null){
+        out.println("<script>alert(\""+info+"\")</script>");
     }
 %>
 

@@ -52,29 +52,29 @@
                 <h2 class="page-header">
                     <a href="" class="active">查询笔记</a>
                     <span>｜</span>
-                    <a href="">新建笔记</a>
+                    <a href="/note/createNote">新建笔记</a>
                 </h2>
 
                 <h4 class="page-header main-header">选择条件</h4>
                 <div class="row main-input">
-                    <form class=" form-horizontal input-form" action="" method="post" onSubmit="return validateForm(this)">
+                    <form class=" form-horizontal input-form" action="/note/limit" method="post" onSubmit="return validateForm(this)">
                         <div class="col-md-6 form-group">
                             <label for="input1" class="col-sm-3 control-label">笔记主题</label>
                             <div class="col-sm-9">
-                                <input type="text" name="depID" class="form-control" id="input1" placeholder="主题">
+                                <input type="text" name="theme" class="form-control" id="input1" placeholder="主题">
                             </div>
                         </div>
-                        <div class="col-md-6  form-group">
-                            <label for="input2" class="col-sm-3 control-label">笔记标签</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="depName" class="form-control" id="input2" placeholder="标签">
-                            </div>
-                        </div>
+                        <%--<div class="col-md-6  form-group">--%>
+                            <%--<label for="input2" class="col-sm-3 control-label">笔记标签</label>--%>
+                            <%--<div class="col-sm-9">--%>
+                                <%--<input type="text" name="depName" class="form-control" id="input2" placeholder="标签">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                         <div class="col-md-6  form-group">
                             <label for="input3" class="col-sm-3 control-label">笔记类型</label>
                             <div class="col-sm-9">
-                                <select  name="depType" class="form-control" id="input3">
-                                    <option value="">全部</option>
+                                <select  name="type" class="form-control" id="input3">
+                                    <option value="-1">全部</option>
                                     <option value="1">文本</option>
                                     <option value="2">图片</option>
                                     <option value="3">视频</option>
@@ -85,7 +85,7 @@
 
                         <div class="col-md-6 pull-right form-group">
                             <div class="col-sm-6 col-sm-offset-6">
-                                <input type="submit" value="查询" class="form-control btn btn-primary" >
+                                <input type="submit" value="查询" class="form-control btn btn-primary" action="">
                             </div>
                         </div>
                     </form>
@@ -115,13 +115,6 @@
                         %>
 
 
-                        <%--<%--%>
-                            <%--List<Department> all= (List<Department>)session.getAttribute("depAll");--%>
-                            <%--if(all!=null){--%>
-                                <%--Iterator<Department> iter=all.iterator();--%>
-                                <%--while(iter.hasNext()){--%>
-                                    <%--Department dep = iter.next();--%>
-                        <%--%>--%>
 
                         <c:forEach items="${noteDetail}" var="noteDetail">
                         <tr>
@@ -131,29 +124,26 @@
                             <td>${noteDetail.editor}</td>
                             <td><fmt:formatDate value="${noteDetail.time}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                             <td>
-                                <form class="" action="" method="post" onSubmit="return validate(this)">
-                                    <input type="hidden"  name="depID" value="<%--<%=dep.getDepID() %>--%>"/>
+                                <form class="" action="" method="post" >
+                                    <input type="hidden"  name="depID" value="${noteDetail.noteID}"/>
                                     <input  type="submit" value="查看" class="  btn btn-sm btn-success"/>
                                 </form>
                             </td>
                             <td>
                                 <form class="" action="" method="post">
-                                    <input type="hidden" name="depID" value="<%--<%=dep.getDepID() %>--%>"/>
+                                    <input type="hidden" name="depID" value="${noteDetail.noteID}"/>
                                     <input  type="submit" value="编辑" class=" btn btn-sm btn-warning "/>
                                 </form>
                             </td>
                             <td>
-                                <form class="" action="" method="post" onSubmit="return validate(this)">
-                                    <input type="hidden"  name="depID" value="<%--<%=dep.getDepID() %>--%>"/>
+                                <form class="" action="" method="post" >
+                                    <input type="hidden"  name="depID" value="${noteDetail.noteID}"/>
                                     <input  type="submit" value="删除" class=" btn btn-sm btn-danger "/>
                                 </form>
                             </td>
                         </tr>
                         </c:forEach>
-                        <%--<%--%>
-                                <%--}--%>
-                            <%--}--%>
-                        <%--%>--%>
+
 
                         </tbody>
                     </table>
