@@ -86,4 +86,18 @@ public class Note {
     public void setLabelID(long labelID) {
         this.labelID = labelID;
     }
+
+    @Override
+    public String toString() {
+        return "Note{" +
+                "noteID=" + noteID +
+                ", type=" + type +
+                ", theme='" + theme + '\'' +
+                ", content='" + content + '\'' +
+                ", editorID=" + editorID +
+                ", creatorID=" + creatorID +
+                ", time=" + time +
+                ", labelID=" + labelID +
+                '}';
+    }
 }

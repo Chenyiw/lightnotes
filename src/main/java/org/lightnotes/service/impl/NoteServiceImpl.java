@@ -49,8 +49,25 @@ public class NoteServiceImpl implements NoteService {
         return  noteDao.selectNoteByThemeAndType(theme,type,userID);
     }
 
+    public NoteDetail detailByID(long noteID) {
+        return noteDao.detailByID(noteID);
+    }
+
+    public List<NoteDetail> detailNoteByEditor(long userID) {
+        return noteDao.detailNoteByEditor(userID);
+    }
+
+    public List<NoteDetail> noteLimitByEditor(String theme, int type, long userID) {
+        theme = "%"+theme+"%";
+        if(type==-1){
+            return noteDao.editorNoteByTheme(theme,userID);
+        }
+        return  noteDao.editorNoteByThemeAndType(theme,type,userID);
+    }
+
     public int editorNote(Note note) {
-        return 0;
+
+        return noteDao.updateNote(note);
     }
 
     public int createNote(Note note) {
@@ -58,6 +75,6 @@ public class NoteServiceImpl implements NoteService {
     }
 
     public int deleteNote(long noteID) {
-        return 0;
+        return  noteDao.deleteNote(noteID);
     }
 }

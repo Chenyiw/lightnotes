@@ -9,7 +9,7 @@
         WHERE usermail = #{usermail}
     </select>
 
-    <select id="selecUserByID" resultType="User" >
+    <select id="selectUserByID" resultType="User" >
         SELECT userID,userMail,password,type,name,gender,age
         FROM user
         WHERE userID = #{userID}

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface NoteDao {
 
-    List<Note> selectNoteByCreator(long creatorID);
+//    List<Note> selectNoteByCreator(long creatorID);
 
     List<NoteDetail> detailNoteByCreator(long creatorID);
 
@@ -19,11 +19,17 @@ public interface NoteDao {
 
     List<NoteDetail> selectNoteByTheme(@Param("theme") String theme,@Param("creatorID") long creatorID);
 
-    List<Note> selectNoteByEditor(long editorID);
+    List<NoteDetail> editorNoteByThemeAndType(@Param("theme") String theme, @Param("type") int type,@Param("editorID")long editorID);
 
-    List<Note> selectNoteBy(long labelID);
+    List<NoteDetail> editorNoteByTheme(@Param("theme") String theme,@Param("editorID") long editorID);
 
-    Note selectNoteByID(long noteID);
+    List<NoteDetail> detailNoteByEditor(long editorID);
+
+//    List<Note> selectNoteByLabel(long labelID);
+
+//    Note selectNoteByID(long noteID);
+
+    NoteDetail detailByID(long noteID);
 
     int updateNote(Note note);
 

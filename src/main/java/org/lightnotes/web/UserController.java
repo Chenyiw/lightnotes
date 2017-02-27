@@ -36,6 +36,52 @@ public class UserController {
         }
     }
 
+    @RequestMapping("/userDetail")
+    public String userDetail(Model model,HttpSession session){
+        if(session.getAttribute("userID")==null) return "redirect:/";
+        Long userID = Long.valueOf(session.getAttribute("userID").toString());
+        User user = userService.selectUserByID(userID);
+        model.addAttribute("user",user);
+
+        return "userDetail";
+    }
+
+    @RequestMapping("/update")
+    public String update(Model model,HttpSession session){
+        if(session.getAttribute("userID")==null) return "redirect:/";
+        Long userID = Long.valueOf(session.getAttribute("userID").toString());
+        User user = userService.selectUserByID(userID);
+        model.addAttribute("user",user);
+        return "updateUser";
+    }
+
+    @RequestMapping("doUpdate")
+    public String doUpdate(Model model,HttpSession session){
+        String info = "修改成功";
+        session.setAttribute("info", info);
+
+//        修改失败
+
+        return "redirect:/user/userDetail";
+    }
+
+    @RequestMapping("/resetPassword")
+    public String resetPassword(Model model,HttpSession session){
+
+
+        return "resetPassword";
+    }
+
+
+    @RequestMapping("/doResetPassword")
+    public String doResetPassword(Model model,HttpSession session){
+        String info = "修改成功";
+        session.setAttribute("info", info);
+
+//        修改失败
+
+        return "redirect:/user/userDetail";
+    }
 
 
 //    @RequestMapping(value = "/{userMail}/userByMail")

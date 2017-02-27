@@ -9,24 +9,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>笔记内容</title>
+    <title>修改密码</title>
 
     <link rel="stylesheet" href="/resources/util/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/main.css"/>
 </head>
 
 <body>
-<%--<%--%>
-<%--//获取部门列表--%>
-<%--List<Department> depList = null;--%>
-<%--try{--%>
-<%--depList = DaoFactory.getIDepartmentDaoInstance().getPerInDep(-1, "", "");--%>
-<%--}catch(Exception e){--%>
-<%--e.printStackTrace();--%>
-<%--}--%>
-
-<%--%>--%>
-
 
 <div class="container">
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -43,9 +32,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href=""><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;笔记</a></li>
+                    <li><a href="/note/myNote"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;笔记</a></li>
                     <li><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;群组</a></li>
-                    <li><a href="/user/userDetail"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;用户信息</a></li>
+                    <li class="active"><a href=""><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;用户信息</a></li>
                 </ul>
             </div>
         </div>
@@ -54,52 +43,39 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a>我的笔记</a></li>
-                    <li><a href="/note/noteByEditor">参与的笔记</a></li>
+                    <li><a href="/user/userDetail">我的信息</a></li>
+                    <li class="active"><a href="">修改密码</a></li>
 
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h2 class="page-header">
-                    <a href="" class="active">笔记内容</a>
+                    <a href="" class="active">修改密码</a>
                 </h2>
 
-                <h4 class="page-header main-header">笔记详细内容</h4>
+                <h4 class="page-header main-header">输入新密码</h4>
                 <div class="row main-input">
-                    <form class=" form-horizontal input-form" action="/note/myNote" >
+                    <form class=" form-horizontal input-form" action="/user/doResetPassword" method="post" onSubmit="return validateForm(this)">
                         <div class="col-md-6 form-group">
-                            <label  class="col-sm-3 label-info">笔记主题</label>
-                            <label class="col-sm-9">${noteDetail.theme}</label>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label  class="col-sm-3 label-info">笔记类型</label>
-                            <label class="col-sm-9">${noteDetail.type}</label>
-                        </div>
-
-                        <div class="col-md-6 form-group">
-                            <label  class="col-sm-3 label-info">笔记标签</label>
-                            <label class="col-sm-9 ">学习</label>
+                            <label for="input1" class="col-sm-3 control-label">输入密码</label>
+                            <div class="col-sm-9">
+                                <input type="password" name="password" class="form-control" id="input1">
+                            </div>
                         </div>
 
 
                         <div class="col-md-6 form-group">
-                            <label  class="col-sm-3 label-info">修改时间</label>
-                            <label class="col-sm-9"><fmt:formatDate value="${noteDetail.time}" pattern="yyyy-MM-dd HH:mm:ss" /></label>
-                        </div>
-
-                        <div class="col-md-6 form-group">
-                            <label  class="col-sm-3 label-info">笔记内容</label>
-                            <label class="col-sm-9">${noteDetail.content}</label>
+                            <label for="input2" class="col-sm-3 control-label">确认密码</label>
+                            <div class="col-sm-9">
+                                <input type="password" name="password1" class="form-control" id="input2">
+                            </div>
                         </div>
 
                         <div class="col-md-6 form-group">
 
                             <label>  &nbsp</label>
                         </div>
-                        <div class="col-md-6 form-group">
 
-                            <label>  &nbsp</label>
-                        </div>
                         <div class="col-md-6 form-group">
 
                             <label>  &nbsp</label>
@@ -107,7 +83,7 @@
 
                         <div class="col-md-6 pull-right form-group">
                             <div class="col-sm-6 col-sm-offset-6">
-                                <input type="submit" value="返回" class="form-control btn btn-primary" >
+                                <input type="submit" value="确定" class="form-control btn btn-primary" >
                             </div>
                         </div>
                     </form>
@@ -132,12 +108,28 @@
 <script src="/resources/util/laydate/laydate.js"></script>
 
 
+<script type="text/javascript">
+    function validateForm(form){
+        var password = form.password.value;
+        var password1 = form.password1.value;
 
+
+        if (password != password1){
+            alert("前后两次输入不一致");
+            return false;
+        }
+
+
+
+        return true;
+    }
+</script>
 
 
 
 </body>
 </html>
+
 
 
 

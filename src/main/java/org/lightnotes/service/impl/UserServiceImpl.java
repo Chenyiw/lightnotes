@@ -27,4 +27,8 @@ public class UserServiceImpl implements UserService{
     public User selectUser(String userMail) {
         return userDao.selectUser(userMail);
     }
+
+    public User selectUserByID(long userID) {
+        return userDao.selectUserByID(userID);
+    }
 }

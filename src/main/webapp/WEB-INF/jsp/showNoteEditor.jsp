@@ -54,8 +54,8 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a>我的笔记</a></li>
-                    <li><a href="/note/noteByEditor">参与的笔记</a></li>
+                    <li><a href="/note/myNote">我的笔记</a></li>
+                    <li class="active"><a>参与的笔记</a></li>
 
                 </ul>
             </div>
@@ -66,7 +66,7 @@
 
                 <h4 class="page-header main-header">笔记详细内容</h4>
                 <div class="row main-input">
-                    <form class=" form-horizontal input-form" action="/note/myNote" >
+                    <form class=" form-horizontal input-form" action="/note/noteByEditor" >
                         <div class="col-md-6 form-group">
                             <label  class="col-sm-3 label-info">笔记主题</label>
                             <label class="col-sm-9">${noteDetail.theme}</label>

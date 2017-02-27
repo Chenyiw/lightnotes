@@ -16,6 +16,12 @@ public interface NoteService {
 
     List<NoteDetail> selectNoteByLimit(String theme,int type,long userID);
 
+    NoteDetail detailByID(long noteID);
+
+    List<NoteDetail> detailNoteByEditor(long userID);
+
+    List<NoteDetail> noteLimitByEditor(String theme,int type,long userID);
+
     int editorNote(Note note);
 
     int createNote(Note note);

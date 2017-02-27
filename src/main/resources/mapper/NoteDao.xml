@@ -9,6 +9,22 @@
         WHERE creatorID = #{creatorID}
     </select>
 
+    <select id="detailByID" resultType="NoteDetail">
+        SELECT
+        note.noteID,
+        note.type,
+        note.theme,
+        note.content,
+        T1.`name` AS editor,
+        T2.`name` AS creator,
+        note.time
+        FROM note, user T1, user T2
+        WHERE
+        note.editorID = T1.userID
+        AND note.creatorID = T2.userID
+        AND note.noteID = #{noteID}
+    </select>
+
     <select id="detailNoteByCreator" resultType="NoteDetail">
         SELECT
         note.noteID,
@@ -23,6 +39,22 @@
         note.editorID = T1.userID
         AND note.creatorID = T2.userID
         AND note.creatorId = #{creatorID}
+    </select>
+
+    <select id="detailNoteByEditor" resultType="NoteDetail">
+        SELECT
+        note.noteID,
+        note.type,
+        note.theme,
+        note.content,
+        T1.`name` AS editor,
+        T2.`name` AS creator,
+        note.time
+        FROM note, user T1, user T2
+        WHERE
+        note.editorID = T1.userID
+        AND note.creatorID = T2.userID
+        AND note.editorID = #{editorID}
     </select>
 
     <select id="selectNoteByThemeAndType" resultType="NoteDetail">
@@ -59,6 +91,54 @@
         AND note.theme LIKE #{theme}
         AND note.creatorId = #{creatorID}
     </select>
+
+    <select id="editorNoteByThemeAndType" resultType="NoteDetail">
+        SELECT
+        note.noteID,
+        note.type,
+        note.theme,
+        note.content,
+        T1.`name` AS editor,
+        T2.`name` AS creator,
+        note.time
+        FROM note, user T1, user T2
+        WHERE
+        note.editorID = T1.userID
+        AND note.creatorID = T2.userID
+        AND note.theme LIKE #{theme}
+        AND note.type = #{type}
+        AND note.editorID = #{editorID}
+    </select>
+
+    <select id="editorNoteByTheme" resultType="NoteDetail">
+        SELECT
+        note.noteID,
+        note.type,
+        note.theme,
+        note.content,
+        T1.`name` AS editor,
+        T2.`name` AS creator,
+        note.time
+        FROM note, user T1, user T2
+        WHERE
+        note.editorID = T1.userID
+        AND note.creatorID = T2.userID
+        AND note.theme LIKE #{theme}
+        AND note.editorID = #{editorID}
+    </select>
+
+    <update id="updateNote">
+        UPDATE note
+        SET theme = #{theme},type = #{type},time = #{time},content = #{content}
+        WHERE noteID = #{noteID}
+    </update>
+
+    <delete id="deleteNote">
+        DELETE FROM note
+        WHERE noteID = #{noteID}
+    </delete>
+
+
     <!--<select id="selectUser" resultType="User" >-->
         <!--SELECT userID,userMail,password,type,name,gender,age-->
         <!--FROM user-->
@@ -76,21 +156,17 @@
         <!--FROM user-->
     <!--</select>-->
 
-    <!--<delete id="deleteUser">-->
-        <!--DELETE FROM user-->
-        <!--WHERE userID = #{userID}-->
-    <!--</delete>-->
+    <delete id="deleteUser">
+        DELETE FROM user
+        WHERE userID = #{userID}
+    </delete>
 
     <!--<insert id="insertUser">-->
         <!--INSERT INTO user(userMail,password,type,name,gender,age)-->
         <!--VALUES (#{userMail},#{password},#{type},#{name},#{gender},#{age})-->
     <!--</insert>-->
 
-    <!--<update id="updateUser">-->
-        <!--UPDATE user-->
-        <!--SET userMail = #{userMail},password = #{password},type = #{type},name = #{name},age = #{age}-->
-        <!--WHERE userID = #{userID}-->
-    <!--</update>-->
+
 
 
 </mapper>

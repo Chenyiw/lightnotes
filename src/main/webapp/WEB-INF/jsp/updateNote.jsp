@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>新建笔记</title>
+    <title>修改笔记</title>
 
     <link rel="stylesheet" href="/resources/util/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/main.css"/>
@@ -17,13 +17,13 @@
 
 <body>
 <%--<%--%>
-    <%--//获取部门列表--%>
-    <%--List<Department> depList = null;--%>
-    <%--try{--%>
-        <%--depList = DaoFactory.getIDepartmentDaoInstance().getPerInDep(-1, "", "");--%>
-    <%--}catch(Exception e){--%>
-        <%--e.printStackTrace();--%>
-    <%--}--%>
+<%--//获取部门列表--%>
+<%--List<Department> depList = null;--%>
+<%--try{--%>
+<%--depList = DaoFactory.getIDepartmentDaoInstance().getPerInDep(-1, "", "");--%>
+<%--}catch(Exception e){--%>
+<%--e.printStackTrace();--%>
+<%--}--%>
 
 <%--%>--%>
 
@@ -54,25 +54,23 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="">我的笔记</a></li>
+                    <li class="active"><a>我的笔记</a></li>
                     <li><a href="/note/noteByEditor">参与的笔记</a></li>
 
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h2 class="page-header">
-                    <a href="/note/myNote">查询笔记</a>
-                    <span>｜</span>
-                    <a href="" class="active">新建笔记</a>
+                    <a href="" class="active">修改笔记</a>
                 </h2>
 
-                <h4 class="page-header main-header">添加内容</h4>
+                <h4 class="page-header main-header">填入笔记</h4>
                 <div class="row main-input">
-                    <form class=" form-horizontal input-form" action="/note/doCreateNote" method="post" onSubmit="return validateForm(this)">
+                    <form class=" form-horizontal input-form" action="/note/doUpdate" method="post" onSubmit="return validateForm(this)">
                         <div class="col-md-6 form-group">
                             <label for="input1" class="col-sm-3 control-label">笔记主题</label>
                             <div class="col-sm-9">
-                                <input type="text" name="theme" class="form-control" id="input1" placeholder="笔记主题">
+                                <input type="text" name="theme" class="form-control" id="input1" value="${noteDetail.theme}">
                             </div>
                         </div>
                         <div class="col-md-6  form-group">
@@ -91,22 +89,29 @@
                         <div class="col-md-6 form-group">
                             <label for="input3" class="col-sm-3 control-label">笔记标签</label>
                             <div class="col-sm-9">
-                                <input type="text" name="label" class="form-control" id="input3" placeholder="笔记标签">
+                                <input type="text" name="label" class="form-control" id="input3" value="学习">
                             </div>
                         </div>
 
 
                         <div class="col-md-6  form-group">
-                            <label for="input4" class="col-sm-3 control-label">创建时间</label>
+                            <label for="input4" class="col-sm-3 control-label">修改时间</label>
                             <div class="col-sm-9">
-                                <input type="text" name="time" class="form-control" id="input4" placeholder="创建时间">
+                                <input type="text" name="time" class="form-control" id="input4" value="<fmt:formatDate value="${noteDetail.time}" pattern="yyyy-MM-dd" />">
                             </div>
                         </div>
 
                         <div class="col-md-6 form-group">
                             <label for="input5" class="col-sm-3 control-label">笔记内容</label>
                             <div class="col-sm-9">
-                                <textarea name="content" class="form-control" id="input5" placeholder="笔记内容" style="resize:none;"></textarea>
+                                <textarea name="content" class="form-control" id="input5" style="resize:none;">${noteDetail.content}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 form-group" style="display:none">
+                            <label for="input6" class="col-sm-3 control-label">笔记</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="noteID" class="form-control" id="input6" value="${noteDetail.noteID}">
                             </div>
                         </div>
 
@@ -125,7 +130,7 @@
 
                         <div class="col-md-6 pull-right form-group">
                             <div class="col-sm-6 col-sm-offset-6">
-                                <input type="submit" value="创建" class="form-control btn btn-primary" >
+                                <input type="submit" value="修改" class="form-control btn btn-primary" >
                             </div>
                         </div>
                     </form>

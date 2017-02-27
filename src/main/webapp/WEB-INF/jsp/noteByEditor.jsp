@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>我的笔记</title>
+    <title>参与的笔记</title>
 
     <link rel="stylesheet" href="/resources/util/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/main.css"/>
@@ -43,21 +43,19 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="">我的笔记</a></li>
-                    <li><a href="/note/noteByEditor">参与的笔记</a></li>
+                    <li><a href="/note/myNote">我的笔记</a></li>
+                    <li class="active"><a href="">参与的笔记</a></li>
 
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h2 class="page-header">
                     <a href="" class="active">查询笔记</a>
-                    <span>｜</span>
-                    <a href="/note/createNote">新建笔记</a>
                 </h2>
 
                 <h4 class="page-header main-header">选择条件</h4>
                 <div class="row main-input">
-                    <form class=" form-horizontal input-form" action="/note/limit" method="post" onSubmit="return validateForm(this)">
+                    <form class=" form-horizontal input-form" action="/note/limitByEditor" method="post" onSubmit="return validateForm(this)">
                         <div class="col-md-6 form-group">
                             <label for="input1" class="col-sm-3 control-label">笔记主题</label>
                             <div class="col-sm-9">
@@ -65,10 +63,10 @@
                             </div>
                         </div>
                         <%--<div class="col-md-6  form-group">--%>
-                            <%--<label for="input2" class="col-sm-3 control-label">笔记标签</label>--%>
-                            <%--<div class="col-sm-9">--%>
-                                <%--<input type="text" name="depName" class="form-control" id="input2" placeholder="标签">--%>
-                            <%--</div>--%>
+                        <%--<label for="input2" class="col-sm-3 control-label">笔记标签</label>--%>
+                        <%--<div class="col-sm-9">--%>
+                        <%--<input type="text" name="depName" class="form-control" id="input2" placeholder="标签">--%>
+                        <%--</div>--%>
                         <%--</div>--%>
                         <div class="col-md-6  form-group">
                             <label for="input3" class="col-sm-3 control-label">笔记类型</label>
@@ -117,31 +115,25 @@
 
 
                         <c:forEach items="${noteDetail}" var="noteDetail">
-                        <tr>
-                            <td>${noteDetail.theme}</td>
-                            <td>${noteDetail.type}</td>
-                            <td>${noteDetail.creator}</td>
-                            <td>${noteDetail.editor}</td>
-                            <td><fmt:formatDate value="${noteDetail.time}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-                            <td>
-                                <form class="" action="/note/showNote" method="post" >
-                                    <input type="hidden"  name="noteID" value="${noteDetail.noteID}"/>
-                                    <input  type="submit" value="查看" class="  btn btn-sm btn-success"/>
-                                </form>
-                            </td>
-                            <td>
-                                <form class="" action="/note/updateNote" method="post">
-                                    <input type="hidden" name="noteID" value="${noteDetail.noteID}"/>
-                                    <input  type="submit" value="编辑" class=" btn btn-sm btn-warning "/>
-                                </form>
-                            </td>
-                            <td>
-                                <form class="" action="/note/deleteNote" method="post" >
-                                    <input type="hidden"  name="noteID" value="${noteDetail.noteID}"/>
-                                    <input  type="submit" value="删除" class=" btn btn-sm btn-danger "/>
-                                </form>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>${noteDetail.theme}</td>
+                                <td>${noteDetail.type}</td>
+                                <td>${noteDetail.creator}</td>
+                                <td>${noteDetail.editor}</td>
+                                <td><fmt:formatDate value="${noteDetail.time}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                                <td>
+                                    <form class="" action="/note/showNoteEditor" method="post" >
+                                        <input type="hidden"  name="noteID" value="${noteDetail.noteID}"/>
+                                        <input  type="submit" value="查看" class="  btn btn-sm btn-success"/>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form class="" action="/note/updateNoteEditor" method="post">
+                                        <input type="hidden" name="noteID" value="${noteDetail.noteID}"/>
+                                        <input  type="submit" value="编辑" class=" btn btn-sm btn-warning "/>
+                                    </form>
+                                </td>
+                            </tr>
                         </c:forEach>
 
 

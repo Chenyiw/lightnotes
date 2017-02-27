@@ -14,4 +14,6 @@ public interface UserService {
 
     User selectUser(String userMail);
 
+    User selectUserByID(long userID);
+
 }

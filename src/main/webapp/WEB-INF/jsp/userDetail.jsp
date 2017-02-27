@@ -9,24 +9,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>笔记内容</title>
+    <title>个人信息</title>
 
     <link rel="stylesheet" href="/resources/util/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/resources/css/main.css"/>
 </head>
 
 <body>
-<%--<%--%>
-<%--//获取部门列表--%>
-<%--List<Department> depList = null;--%>
-<%--try{--%>
-<%--depList = DaoFactory.getIDepartmentDaoInstance().getPerInDep(-1, "", "");--%>
-<%--}catch(Exception e){--%>
-<%--e.printStackTrace();--%>
-<%--}--%>
-
-<%--%>--%>
-
 
 <div class="container">
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -43,9 +32,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href=""><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;笔记</a></li>
+                    <li><a href="/note/myNote"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;笔记</a></li>
                     <li><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;群组</a></li>
-                    <li><a href="/user/userDetail"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;用户信息</a></li>
+                    <li class="active"><a href=""><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;用户信息</a></li>
                 </ul>
             </div>
         </div>
@@ -54,48 +43,40 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a>我的笔记</a></li>
-                    <li><a href="/note/noteByEditor">参与的笔记</a></li>
+                    <li class="active"><a href="">我的信息</a></li>
+                    <li><a href="/user/resetPassword">修改密码</a></li>
 
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h2 class="page-header">
-                    <a href="" class="active">笔记内容</a>
+                    <a href="" class="active">个人信息</a>
+                    <span>｜</span>
+                    <a href="/user/update">修改信息</a>
                 </h2>
 
-                <h4 class="page-header main-header">笔记详细内容</h4>
+                <h4 class="page-header main-header">详细信息</h4>
                 <div class="row main-input">
-                    <form class=" form-horizontal input-form" action="/note/myNote" >
+                    <form class=" form-horizontal input-form" action="/user/update" >
                         <div class="col-md-6 form-group">
-                            <label  class="col-sm-3 label-info">笔记主题</label>
-                            <label class="col-sm-9">${noteDetail.theme}</label>
+                            <label  class="col-sm-3 label-info">用户邮箱</label>
+                            <label class="col-sm-9">${user.usermail}</label>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label  class="col-sm-3 label-info">笔记类型</label>
-                            <label class="col-sm-9">${noteDetail.type}</label>
-                        </div>
-
-                        <div class="col-md-6 form-group">
-                            <label  class="col-sm-3 label-info">笔记标签</label>
-                            <label class="col-sm-9 ">学习</label>
-                        </div>
-
-
-                        <div class="col-md-6 form-group">
-                            <label  class="col-sm-3 label-info">修改时间</label>
-                            <label class="col-sm-9"><fmt:formatDate value="${noteDetail.time}" pattern="yyyy-MM-dd HH:mm:ss" /></label>
+                            <label  class="col-sm-3 label-info">用户名称</label>
+                            <label class="col-sm-9">${user.name}</label>
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label  class="col-sm-3 label-info">笔记内容</label>
-                            <label class="col-sm-9">${noteDetail.content}</label>
+                            <label  class="col-sm-3 label-info">用户性别</label>
+                            <label class="col-sm-9 ">${user.gender}</label>
                         </div>
 
                         <div class="col-md-6 form-group">
-
-                            <label>  &nbsp</label>
+                            <label  class="col-sm-3 label-info">用户年龄</label>
+                            <label class="col-sm-9">${user.age}</label>
                         </div>
+
                         <div class="col-md-6 form-group">
 
                             <label>  &nbsp</label>
@@ -107,7 +88,7 @@
 
                         <div class="col-md-6 pull-right form-group">
                             <div class="col-sm-6 col-sm-offset-6">
-                                <input type="submit" value="返回" class="form-control btn btn-primary" >
+                                <input type="submit" value="修改" class="form-control btn btn-primary" >
                             </div>
                         </div>
                     </form>
