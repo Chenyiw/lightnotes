@@ -18,6 +18,7 @@
     <select id="showAllUser" resultType="User">
         SELECT *
         FROM user
+        WHERE user.type = 1
     </select>
 
     <delete id="deleteUser">

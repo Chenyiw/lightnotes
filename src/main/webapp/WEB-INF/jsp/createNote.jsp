@@ -47,6 +47,9 @@
                     <li><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;群组</a></li>
                     <li><a href="/user/userDetail"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;用户信息</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-left pull-right">
+                    <li><a href="/user/logout"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;退出</a></li>
+                </ul>
             </div>
         </div>
     </nav>

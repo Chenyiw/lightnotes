@@ -45,7 +45,7 @@ public class NoteController {
     @RequestMapping("/myNote")
     public String getNoteByCreator( Model model,HttpSession session){
 
-        if(session.getAttribute("userID")==null) return "redirect:/";
+        if(session.getAttribute("userID")==null) return "redirect:/user/loginView";
         Long userID = Long.valueOf(session.getAttribute("userID").toString());
         List<NoteDetail> list = noteService.detailNoteByCreator(userID);
         model.addAttribute("noteDetail",list);
@@ -55,7 +55,7 @@ public class NoteController {
 
     @RequestMapping("/limit")
     public String getNoteByLimit(String theme,int type,Model model,HttpSession session){
-        if(session.getAttribute("userID")==null) return "redirect:/";
+        if(session.getAttribute("userID")==null) return "redirect:/user/loginView";
         Long userID = Long.valueOf(session.getAttribute("userID").toString());
         List<NoteDetail> list = noteService.selectNoteByLimit(theme,type,userID);
         model.addAttribute("noteDetail",list);
@@ -64,7 +64,7 @@ public class NoteController {
 
     @RequestMapping("/createNote")
     public String createNote(HttpSession session){
-        if(session.getAttribute("userID")==null) return "redirect:/";
+        if(session.getAttribute("userID")==null) return "redirect:/user/loginView";
         return "createNote";
     }
 
@@ -80,7 +80,7 @@ public class NoteController {
 
     @RequestMapping("/showNote")
     public String showNote(long noteID,Model model,HttpSession session){
-        if(session.getAttribute("userID")==null) return "redirect:/";
+        if(session.getAttribute("userID")==null) return "redirect:/user/loginView";
         NoteDetail noteDetail = noteService.detailByID(noteID);
         model.addAttribute("noteDetail",noteDetail);
         return "showNote";
@@ -88,7 +88,7 @@ public class NoteController {
 
     @RequestMapping("/showNoteEditor")
     public String showNoteEditor(long noteID,Model model,HttpSession session){
-        if(session.getAttribute("userID")==null) return "redirect:/";
+        if(session.getAttribute("userID")==null) return "redirect:/user/loginView";
         NoteDetail noteDetail = noteService.detailByID(noteID);
         model.addAttribute("noteDetail",noteDetail);
         return "showNoteEditor";
@@ -96,7 +96,7 @@ public class NoteController {
 
     @RequestMapping("/updateNote")
     public String updateNote(long noteID,Model model,HttpSession session){
-        if(session.getAttribute("userID")==null) return "redirect:/";
+        if(session.getAttribute("userID")==null) return "redirect:/user/loginView";
         NoteDetail noteDetail = noteService.detailByID(noteID);
         model.addAttribute("noteDetail",noteDetail);
         return "updateNote";
@@ -104,7 +104,7 @@ public class NoteController {
 
     @RequestMapping("/doUpdate")
     public String doUpdate(Note note,Model model, HttpSession session){
-        if(session.getAttribute("userID")==null) return "redirect:/";
+        if(session.getAttribute("userID")==null) return "redirect:/user/loginView";
         note.setEditorID(Long.valueOf(session.getAttribute("userID").toString()));
         noteService.editorNote(note);
         String info = "修改成功";
@@ -118,7 +118,7 @@ public class NoteController {
 
     @RequestMapping("/updateNoteEditor")
     public String updateNoteEditor(long noteID,Model model,HttpSession session){
-        if(session.getAttribute("userID")==null) return "redirect:/";
+        if(session.getAttribute("userID")==null) return "redirect:/user/loginView";
         NoteDetail noteDetail = noteService.detailByID(noteID);
         model.addAttribute("noteDetail",noteDetail);
         return "updateNoteEditor";
@@ -144,7 +144,7 @@ public class NoteController {
 
     @RequestMapping("/noteByEditor")
     public String noteByEditor(Model model,HttpSession session){
-        if(session.getAttribute("userID")==null) return "redirect:/";
+        if(session.getAttribute("userID")==null) return "redirect:/user/loginView";
         Long userID = Long.valueOf(session.getAttribute("userID").toString());
         List<NoteDetail> list = noteService.detailNoteByEditor(userID);
         model.addAttribute("noteDetail",list);
@@ -154,7 +154,7 @@ public class NoteController {
 
     @RequestMapping("/limitByEditor")
     public String limitByEditor(String theme,int type,Model model,HttpSession session){
-        if(session.getAttribute("userID")==null) return "redirect:/";
+        if(session.getAttribute("userID")==null) return "redirect:/user/loginView";
         Long userID = Long.valueOf(session.getAttribute("userID").toString());
         List<NoteDetail> list = noteService.noteLimitByEditor(theme,type,userID);
         model.addAttribute("noteDetail",list);

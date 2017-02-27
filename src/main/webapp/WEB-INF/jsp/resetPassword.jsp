@@ -36,6 +36,9 @@
                     <li><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;群组</a></li>
                     <li class="active"><a href=""><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;用户信息</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-left pull-right">
+                    <li><a href="/user/logout"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;退出</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -114,7 +117,14 @@
         var password1 = form.password1.value;
 
 
-        if (password != password1){
+
+        if (password == null || password == ""){
+            alert("第一次输入为空");
+            return false;
+        }if (password1 == null || password1 == ""){
+            alert("第二次输入为空");
+            return false;
+        }if (password != password1){
             alert("前后两次输入不一致");
             return false;
         }
