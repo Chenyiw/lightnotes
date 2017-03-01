@@ -127,9 +127,14 @@
         AND note.editorID = #{editorID}
     </select>
 
+    <insert id="insertNote">
+    INSERT INTO note(type,theme,content,editorID,time,creatorID,labelID)
+    VALUES (#{type},#{theme},#{content},#{editorID},#{time},#{creatorID},#{labelID})
+    </insert>
+
     <update id="updateNote">
         UPDATE note
-        SET theme = #{theme},type = #{type},time = #{time},content = #{content}
+        SET theme = #{theme},type = #{type},time = #{time},content = #{content},editorID = #{editorID}
         WHERE noteID = #{noteID}
     </update>
 
@@ -156,15 +161,12 @@
         <!--FROM user-->
     <!--</select>-->
 
-    <delete id="deleteUser">
-        DELETE FROM user
-        WHERE userID = #{userID}
-    </delete>
+    <!--<delete id="deleteUser">-->
+        <!--DELETE FROM user-->
+        <!--WHERE userID = #{userID}-->
+    <!--</delete>-->
 
-    <!--<insert id="insertUser">-->
-        <!--INSERT INTO user(userMail,password,type,name,gender,age)-->
-        <!--VALUES (#{userMail},#{password},#{type},#{name},#{gender},#{age})-->
-    <!--</insert>-->
+
 
 
 

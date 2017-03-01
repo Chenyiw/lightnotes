@@ -111,6 +111,13 @@
                             </div>
                         </div>
 
+                        <div class="col-md-6 form-group" style="display:none">
+                            <label for="input6" class="col-sm-3 control-label">笔记</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="noteID" class="form-control" id="input6" value="${noteDetail.noteID}">
+                            </div>
+                        </div>
+
                         <div class="col-md-6 form-group">
 
                             <label>  &nbsp</label>

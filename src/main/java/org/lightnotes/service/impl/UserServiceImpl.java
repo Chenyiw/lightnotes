@@ -31,4 +31,8 @@ public class UserServiceImpl implements UserService{
     public User selectUserByID(long userID) {
         return userDao.selectUserByID(userID);
     }
+
+    public int createUser(User user) {
+        return userDao.insertUser(user);
+    }
 }

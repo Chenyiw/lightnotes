@@ -74,7 +74,7 @@ public class UserController {
     }
 
     @RequestMapping("doUpdate")
-    public String doUpdate(Model model,HttpSession session){
+    public String doUpdate(User user,Model model,HttpSession session){
         String info = "修改成功";
         session.setAttribute("info", info);
 
@@ -113,13 +113,17 @@ public class UserController {
     }
 
     @RequestMapping("/doSignUp")
-    public String doSignUp(Model model,HttpSession session){
-        String info = "注册成功";
-        session.setAttribute("info", info);
+    public String doSignUp(User user,Model model,HttpSession session){
+        user.setType(1);
+        if(userService.createUser(user) == 1){
+            String info = "注册成功";
+            session.setAttribute("info", info);
+            return "redirect:/";
+        }
+        String info = "注册失败";
+        session.setAttribute("info",info);
+        return "redirect:/signUp";
 
-//        修改失败
-
-        return "redirect:/";
     }
 
     @RequestMapping("/adminView")

@@ -71,7 +71,7 @@ public class NoteServiceImpl implements NoteService {
     }
 
     public int createNote(Note note) {
-        return 0;
+        return noteDao.insertNote(note);
     }
 
     public int deleteNote(long noteID) {

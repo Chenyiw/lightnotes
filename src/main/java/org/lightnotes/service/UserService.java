@@ -16,4 +16,6 @@ public interface UserService {
 
     User selectUserByID(long userID);
 
+    int createUser(User user);
+
 }

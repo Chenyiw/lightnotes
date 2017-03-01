@@ -69,12 +69,16 @@ public class NoteController {
     }
 
     @RequestMapping("/doCreateNote")
-    public String doCreateNote(Model model,HttpSession session){
-        String info = "创建成功";
+    public String doCreateNote(Note note, Model model,HttpSession session){
+        note.setEditorID(Long.valueOf(session.getAttribute("userID").toString()));
+        note.setCreatorID(Long.valueOf(session.getAttribute("userID").toString()));
+        note.setLabelID(-1);
+        String info = "创建失败";
+        if(noteService.createNote(note) == 1){
+            info = "创建成功";
+        }
+
         session.setAttribute("info", info);
-
-//        创建失败
-
         return "redirect:/note/myNote";
     }
 
@@ -109,7 +113,6 @@ public class NoteController {
         noteService.editorNote(note);
         String info = "修改成功";
         session.setAttribute("info", info);
-        System.out.println("......................................."+note);
 
 //        修改失败
 
@@ -125,11 +128,16 @@ public class NoteController {
     }
 
     @RequestMapping("/doUpdateEditor")
-    public String doUpdateEditor(Model model,HttpSession session){
-        String info = "修改成功";
-        session.setAttribute("info", info);
+    public String doUpdateEditor(Note note,Model model,HttpSession session){
+        if(session.getAttribute("userID")==null) return "redirect:/user/loginView";
+        note.setEditorID(Long.valueOf(session.getAttribute("userID").toString()));
+        System.out.println(note);
+        String info = "修改失败";
+        if(noteService.editorNote(note)==1){
+            info = "修改成功";
+        }
 
-//        修改失败
+        session.setAttribute("info", info);
 
         return "redirect:/note/noteByEditor";
     }

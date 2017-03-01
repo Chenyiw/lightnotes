@@ -32,7 +32,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;群组</a></li>
+                    <li class="active"><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;管理员</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-left pull-right">
